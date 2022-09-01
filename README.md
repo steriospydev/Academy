@@ -1,3 +1,4 @@
 # Academy
 
-A blog application built with django and bootstrap.
+E learning platform built with django and bootstrap/html/css
+
