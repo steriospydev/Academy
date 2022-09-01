@@ -1,0 +1,25 @@
+Create Dockerfile in each app
+    -   We pull docker images from hub.docker.compose   
+    -   Contains:
+            FROM python:3 
+            WORKDIR /usr/src/app
+            COPY requirements.txt .
+            RUN pip install --no-cache-dir -r requirements.txt
+            COPY . .
+            CMD ["python", "app.py"]
+
+Create a docker-compose.yml on root folder
+    -   Contains:
+            version: '3'
+
+            services:
+            web:
+                build: ./web
+                ports:
+                - "5000:5000"
+            
+Runs Once:
+    sudo docker-compose build
+
+Activate:
+    sudo docker-compose up

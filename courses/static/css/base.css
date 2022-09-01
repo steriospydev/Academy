@@ -1,0 +1,293 @@
+@import url(//fonts.googleapis.com/css?family=Roboto:500,300,400);
+
+:root {
+    --red: #e27171;
+    --blue: #7CB9E8;
+    --black:#333;
+    --white:#FFF5EE;
+  }
+  
+body {
+    margin:0;
+    font-family:'Roboto', sans-serif;
+    font-weight:300;
+    color:var(--black);
+    background-color: var(--white);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    white-space: nowrap;  
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family:'Roboto', sans-serif;
+    font-weight:400;
+}
+
+h1 {
+    background:var(--red);
+    color: var(--white);
+    width:100%;
+    font-weight:500;
+    font-size: 2rem;
+    overflow:auto;
+    padding:20px 0 20px 40px;
+    margin:0;
+}
+
+.btn-danger{
+    background-color: var(--red);;
+    color: var(--white);
+}
+.btn-custom{
+    background-color: var;
+    color:var(--white);
+
+}.selected > .btn{
+    background-color: var(--red);;
+    color: var(--white);
+}
+.nav-cst {
+    border: var(--white) 1px solid;
+    width:100%;
+    border-radius: .8rem;
+}
+.nav-cst a{
+    font-size: 1.3rem;
+    color: var(--white);
+    text-align: center;
+    font-weight:500;
+}
+.nav-cst a:hover{
+    color: var(--red);
+}
+
+.nav-cst:hover{
+    border-radius: 1rem;
+    border: var(--red) 2px solid;
+    color: var(--red);
+}
+
+.mycard{
+    max-width: 80%;background-color:var(--red);
+}
+
+.hidden {
+    display:none;
+}
+
+form p {
+    overflow:auto;
+}
+
+
+.errorlist {
+    color:var(--red);
+    margin:0;
+}
+
+.coursecreateform label{
+    float:left;
+    clear:both;
+    font-weight: 500;
+    margin:0 0 8px 0;
+    letter-spacing: .2em;
+    margin-top: 2px;
+    text-decoration: underline;
+
+}
+
+.coursecreateform
+input, select, textarea {
+    border-radius:1rem;
+    padding:8px 12px;
+    font-size:1.2rem;    
+    font-family:'Roboto', sans-serif;
+    float:left;
+    clear:both;
+    width:100%;
+}
+
+.editmform
+input, select, textarea {
+    border-radius:1rem;
+    padding:8px 12px;
+    font-size:1.2rem;    
+    font-family:'Roboto', sans-serif;
+    float:left;
+    clear:both;
+    width:100%;
+}
+.editmform label{
+    float:left;
+    clear:both;
+    font-weight: 500;
+    margin:0 0 8px 0;
+    letter-spacing: .2em;
+    margin-top: 2px;
+    text-decoration: underline;
+
+}
+
+select {
+    background-color: var(--black);
+    color: var(--white);
+    width:100%;
+}
+
+input[type=submit], a.button {
+    border-radius:5px;
+    font-size:16px;
+    text-transform:uppercase;
+    padding:5px 5px;
+    
+}
+
+a.secondary-button {
+    border:3px solid #4dcc43;
+    padding:10px 20px;
+    margin:10px 0;
+}
+
+input[type=submit]:hover, a.button:hover {
+    background:#3fad37;
+}
+
+ul#course-modules {
+    list-style:none;
+    overflow:auto;
+}
+
+ul#course-modules textarea {
+    width:600px;
+    height:120px;
+}
+
+ul#course-modules li {
+    padding:20px;
+    overflow:auto;
+    cursor:move;
+}
+
+ul#course-modules li:nth-child(even) {
+    background:var(--white);
+}
+
+ul#course-modules li:hover {
+    background:#ccc;
+}
+
+#module-contents div {
+    padding:10px 20px;
+    border:1px solid #ccc;
+    background:#fff;
+}
+
+#module-contents form {
+    margin:0;
+    padding:0;
+}
+#module-contents h6{
+    font-weight: 500;
+    padding:3px;
+    margin-bottom: 30px;
+}
+#module-contents input[type=submit] {
+    color:var(--red);
+    background:none;
+    margin:0px 0 0;
+    padding:0;
+    border:none;
+    float:left;
+    text-transform:none;
+}
+
+#module-contents div:hover {
+    cursor:move;
+}
+
+.course-info {
+    border:1px solid #ccc;
+    padding:0 20px;
+    margin-bottom:10px;
+    width:00px;
+    overflow:auto;
+}
+
+.course-info a {
+    white-space: nowrap;    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.helptext {
+    color:#ccc;
+    padding-left:20px;
+}
+
+#chat {
+    top: 64px;
+    bottom:0;
+    position:fixed;
+    width:100%;
+    overflow-y:scroll;
+    padding-bottom:150px;
+}
+
+#chat .message {
+    background:#efefef;
+    padding:10px 20px;
+    border-radius:4px;
+    width:auto;
+    display:inline;
+    float:left;
+    margin:10px 10px 0;
+    min-width:440px;
+    clear:both;
+}
+
+#chat .message.me {
+    display:inline;
+    float:right;
+    background:#DCEDE0;
+    color:#56A668;
+}
+
+#chat .date {
+    color:#aaa;
+    font-style:italic;
+    font-size:12px;
+}
+
+#chat-input {
+    position:absolute;
+    bottom:0;
+    background:#efefef;
+    width:100%;
+    padding-top:20px;
+}
+
+#chat-input input {
+    width:96%;
+    position:left;
+    float:left;
+    display:inline;
+    margin-left:2%;
+    margin-right:2%;
+    padding-left:0;
+    padding-right:0;
+}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}My courses{% endblock %}
+
+{% block header1 %}Courses that You created{% endblock %}
+
+{% block content %}
+<hr>
+<div class="container">
+    <div class="row ">
+        <div class="col text-center ">
+            <a href="{% url 'courses:course_create' %}" class=" w-100 btn btn-outline-success">
+                <i class="fa-solid fa-circle-plus"></i>   Create new course</a>
+        </p>
+        </div>
+
+</div>
+    <div class="row">
+        {% for course in object_list %}
+            <div class="col-lg-6 col-md col-sm-12  col-xs-12 mb-3">
+                <div class="card" style="width: 100%;height:100%; ">
+                    <div class="card-body">
+                        <h3 class="card-title fw-400">{{ course.title }}</h3>
+                        <h5 class="card-subtitle mb-2 text-muted">{{ course.subject }}</h5>
+                        <p class="card-text">{{course.overview}}</p>
+                        <div class="btn-group mb-2" role="group" aria-label="Basic mixed styles example">
+                            <a class="btn btn-outline-primary me-1" href="{% url 'courses:course_edit' course.id %}">Edit</a>
+                            <a class="btn btn-outline-danger" href="{% url 'courses:course_delete' course.id %}">Delete</a>
+                        </div>
+                        <div class="btn-group  d-flex justify-content-end">
+                            <a class="btn btn-outline-primary me-1" href="{% url 'courses:course_module_update' course.id %}">Edit modules</a>
+                            {% if course.modules.count > 0 %}                            
+                                <a  class="btn btn-success me-1" href="{% url 'courses:module_content_list' course.modules.first.id %}">
+                                    Manage Contents <i class="fa fa-unlock" aria-hidden="true"></i>
+                                </a>
+                            {% else %}
+                                <a href="#" class="btn btn-secondary me-1 disabled">Manage Contents <i class="fa fa-lock" aria-hidden="true"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>You haven't created any courses yet.</p>
+        {% endfor %}
+    </div>
+   
+</div>
+{% endblock %}

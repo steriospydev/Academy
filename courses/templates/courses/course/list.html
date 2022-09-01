@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if subject %}
+        {{ subject.title }} courses
+    {% else %}
+        All courses
+    {% endif %}
+{% endblock %}
+
+{% block header1 %}
+    {% if subject %}
+        {{ subject.title }} courses
+    {% else %}
+        All courses
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-3 rounded-5"  style="height:100vh;">
+    <div class="row justify-content-center p-2 rounded-3" style="background-color:#F5FFFA;">
+        <div class="col-lg-3 col-md-4 col-xs-2 contents mb-3">
+            <h3>Subjects</h3>
+            <ul id="modules" class="list-group">
+                <li class="{% if not subject %}selected{% endif %} list-group-item">
+                    <a href="{% url "course_list" %}">All</a>
+                </li>
+                {% for s in subjects %}
+                    <li class="{% if subject == s %}selected{% endif %} list-group-item">
+                        <a href="{% url "courses:course_list_subject" s.slug %}">
+                            {{ s.title }}<br><span>{{ s.total_courses }} courses</span>
+                    </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-lg-8  col-md-7 col-xs-8 ms-3">
+           
+            <div class="module">
+                {% for course in courses %}
+                {% with subject=course.subject %}
+                <div class="card text-white mb-4 mycard" >
+                    <div class="card-header fw-bold "> {{subject }}</div>
+                    <div class="card-body bg-white text-dark">
+                      <h5 class="card-title fw-bolder">{{ course.title }}</h5>
+                      <p class="card-text">
+                        <figure>
+                            <blockquote class="blockquote">
+                              <p>{{ course.total_modules }} lessons.</p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer">
+                                Instructor: {{ course.owner}}</cite>
+                            </figcaption>
+                          </figure>
+                      </p>
+                      <a href='{% url "courses:course_detail" course.slug %}' class="btn btn-primary float-end">View Course</a>
+                    </div>
+                  </div>
+                    
+                {% endwith %}
+                {% endfor %}
+                {% include 'parts/pagination.html'  %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--
+    <div class="contents">
+        
+       
+    </div>
+
+<h3>
+
+</a>
+   </h3>
+<p>
+
+    {{ course.total_modules }} modules.
+    Instructor: {{ course.owner}}
+</p>
+
+-->
+{% endblock %}

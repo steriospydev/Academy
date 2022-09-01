@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if object %}
+        Edit content "{{ object.title }}"
+    {% else %}
+        Add new content
+    {% endif %}
+{% endblock %}
+
+{% block header1 %}
+    {% if object %}
+        Edit content "{{ object.title }}"
+    {% else %}
+        Add new content
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <a href="{% url 'courses:manage_course_list' %}" class="btn btn-custom p-3 mb-2 ">Back</a>
+        </div>
+    </div>       
+    
+
+    <div class="row">
+        <div class="col-12 shadow-lg p-3 mb-5 rounded">
+            <form class="coursecreateform p-4" action="" method="post" enctype="multipart/form-data">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <input class="btn btn-outline-success w-50" type="submit" value="Save content">
+                
+            </form>
+            
+            </div>
+    </div>
+
+{% endblock %}

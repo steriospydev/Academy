@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ object.title }}
+{% endblock %}
+
+{% block header1 %}
+    {{ object.title }}
+{% endblock %}
+
+{% block content %}
+    {% with subject=object.subject %}
+        <div class="module vh-100 container pt-5">
+            <div class="row">
+                <div class="col-3">
+                    <table class="table">
+                        <tbody>                          
+                            <tr class="table-primary">
+                              <td>Subject</td>
+                              <td><a class="link-info fw-bold" href="{% url "courses:course_list_subject" subject.slug %}">
+                                {{ subject.title }}
+                            </a> </td>
+                            </tr>
+                            <tr class="table-secondary">
+                              <td>Instructor</td>
+                              <td>{{ object.owner }}</td>
+                              
+                            </tr>
+                            <tr class="table-light">
+                                <td>Modules</td>
+                              <td>{{ object.modules.count }}</td>
+                            </tr>
+                          </tbody>                       
+                    </table>                
+              
+                </div>
+                <div class="col-8 text-center">
+                    <h2>Overview</h2>
+                    <p>
+                        {{ object.overview|linebreaks }}
+                    </p>
+                   
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">    
+                    {% if request.user.is_authenticated %}
+                        <form action="{% url 'students:student_enroll_course' %}" method="post">
+                            {{ enroll_form }}
+                            {% csrf_token %}
+                            <input class="btn btn-success " type="submit" value="Enroll now">
+                        </form>
+                    {% else %}
+                        <a href="{% url 'students:student_registration' %}" class="button">
+                            Register to enroll
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endwith %}
+{% endblock %}
